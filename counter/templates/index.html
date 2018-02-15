@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Counter</title>
+    </head>
+    <body>
+        <h1>Counter</h1>
+        <h2>{{session['count']}}</h2>
+        <form action="/timestwo" method="post">
+            <input type="submit" value="x2">    
+        </form>
+        <form action="/reset" method="post">
+            <input type="submit" value="back to 1">
+        </form>
+    </body>
+</html>
