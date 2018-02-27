@@ -1,0 +1,28 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+#wrapper {
+    border: solid 1px black;
+    padding: 5px;
+    width: 402px;
+    margin: auto;
+}
+
+form {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid black;
+    vertical-align: top;
+}
+input {
+    margin: 2.5px;
+    padding: 2px;
+}
+#flash {
+    color: red;
+    font-weight: bold;
+    width: 177px;
+}
