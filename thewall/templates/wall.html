@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Wall</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div id="wrapper2">
+    <h1>The Wall</h1>
+    <form action="/wallpost" method="post">
+        <textarea name="wall_post" cols="100" rows="7"></textarea><br>
+        <input id="message_button" type="submit" value="Post a message">
+    </form>
+    {% for user in session['user'] %}
+    <p class="commentuser">logged in as {{user['first_name']}} {{user['last_name']}}</p>
+    {% endfor %}
+    {% for message in usermessages %}
+    <div id="wallmessages">
+        <p id="messagecontent">{{message['message']}}</p>
+        <p id="by">by {{message['username']}} at {{message['messagedate']}}</p>
+    </div>
+    {% for comment in usercomments %}
+        {% if message['id'] == comment['message_id'] %}
+        <div id="wallcomments">
+            <p id="commentcontent">{{comment['comment']}}</p> 
+            <p class="commentuser">by {{comment['personname']}} at {{comment['commentdate']}}</p>
+        </div>
+        {% endif %}
+    {% endfor %}
+    <br>
+    <form action="/comment/{{ message['id']}} " method="post">
+        <textarea name="comment" cols="90" rows=2></textarea><br>
+        <input id="comment_button"type="submit" value="Post a comment">
+    </form>
+    {% endfor %}
+</div>
+</body>
+</html>
