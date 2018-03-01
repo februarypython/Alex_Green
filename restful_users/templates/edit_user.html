@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Edit User {{friends['id']}}</h1>
+<form id="new_user_form" action="/users/{{friends['id']}}/update" method="post">
+    <span class="bold">First name:</span>
+    <input type="text" name="first_name">
+    <span class="bold">Last name:</span>
+    <input type="text" name="last_name">
+    <span class="bold">Occupation:</span>
+    <input type="text" name="occupation">
+    <input type="submit" value="Update" id="submit">
+</form>
+<br>
+<p><a href="/users/{{friends['id']}}">Show</a> | <a href="/users">Go back</a></p>
+    
+</body>
+</html>
