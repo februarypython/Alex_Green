@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Django Survey Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/create" method="post">
+            {% csrf_token %}
+            Your Name: 
+            <input type="text" name="name" id="name">
+            <br>
+            Dojo Location: 
+            <select name="location" id="location">
+                <option value="online">Online</option>
+                <option value="mountainview">Mountain View</option>
+                <option value="seattle">Seattle</option>
+            </select>
+            <br>
+            Favorite Language:
+            <select name="favlang" id="favlang">
+                <option value="javascript">Javascript</option>
+                <option value="html">HTML</option>
+                <option value="python">Python</option>
+            </select>
+            <br>
+            Comment (optional):
+            <textarea name="comment" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="Submit">
+        </form>    
+    </div>
+</body>
+</html>
