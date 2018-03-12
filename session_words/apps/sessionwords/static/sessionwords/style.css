@@ -1,0 +1,28 @@
+* {
+    font-family: sans-serif;
+}
+form {
+    display: inline-block;
+    width: 400px;
+    border-right: 5px solid blue;
+}
+#new_word {
+    display: inline-block;
+    width: 400px;
+}
+#wrapper {
+    width: 850px;
+    margin: auto;
+}
+.blue {
+    color: blue;
+}
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
+.big {
+    font-size: 150%;
+}
