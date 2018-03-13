@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bamabon Blime Chekbout</title>
+</head>
+<body>
+    <h1>Thank you for your business!</h1>
+    <h3>We just charged your credit card for ${{ request.session.price }}</h6>
+    <h4>Overall you have spent ${{ request.session.total_price }} on {{ request.session.count }} item(s)</h4><hr>
+    <a href="/">Go back</a><hr>
+    <a href="/logout">Logout</a>
+    
+</body>
+</html>
