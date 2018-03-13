@@ -1,0 +1,23 @@
+* {
+    font-family: sans-serif;
+}
+
+#wrapper {
+    width: 900px;
+    margin: auto;
+}
+
+.building {
+    width: 200px;
+    display: inline-block;
+    border: solid 1px black;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #FFFC95;
+}
+
+#activity {
+    width: 880px;
+    height: 200px;
+    overflow: scroll;
+}
