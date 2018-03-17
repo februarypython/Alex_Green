@@ -4,7 +4,8 @@
 		<title>Sports Leagues</title>
 	</head>
 	<body>
-		<h1>1. All Baseball Leagues</h1>
+		<h1>==PART ONE==</h1>
+		<h1>All Baseball Leagues</h1>
 		<ol>
 			{% for league in baseball_leagues %}
 				<li>{{league.name}}</li>
@@ -128,6 +129,117 @@
 		<ol>
 			{% for player in alexander_wyatt %}
 				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>==PART TWO==</h1>
+		<h1>Atlantic Soccer Conference TEams</h1>
+		<ol>
+			{% for team in atlantic_soccer_teams %}
+				<li>{{team.team_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Penguin Players</h1>
+		<ol>
+			{% for player in penguin_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>ICBC Players</h1>
+		<ol>
+			{% for player in icbc_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Lo Pez</h1>
+		<ol>
+			{% for player in lopezes %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>All Football Players</h1>
+		<ol>
+			{% for player in all_football_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Teams w/ Sophias</h1>
+		<ol>
+			{% for player in teams_with_sophia %}
+				<li>{{player.curr_team.team_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Leagues w/ Sophias</h1>
+		<ol>
+			{% for player in teams_with_sophia %}
+				<li>{{player.curr_team.league.name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>No Roughriding Flores'</h1>
+		<ol>
+			{% for player in smooth_flores %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>This History of Sam Evans</h1>
+		<ol>
+			{% for player in samuel_evans %}
+				{% for team in player.all_teams.all %}
+				<li>{{ team.team_name }}</li>
+				{% endfor %}
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>All of The Tiger Cats</h1>
+		<ol>
+			{% for player in all_tiger_cats %}
+			  	<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Old, But Not Current Witch Vikings</h1>
+		<ol>
+			{% for player in some_vikings %}
+			  	<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>The Dark Past of Jacob Gray</h1>
+		<ol>
+			{% for player in jacob_gray %}
+				{% for team in player.all_teams.all %}
+					{% if team.team_name != player.curr_team.team_name %}
+				<li>{{ team.team_name }}</li>
+					{% endif %}
+				{% endfor %}
+			{% empty %}
+				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Baseball Playing Joshua's of The Atlantic Throughout History</h1>
+		<ol>
+			{% for player in baseball_joshes %}
+			  	<li>{{player.first_name}} {{player.last_name}}</li>
 			{% empty %}
 				<p>No players found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
 			{% endfor %}
