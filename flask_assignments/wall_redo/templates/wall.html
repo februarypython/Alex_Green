@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wall</title>
+</head>
+<body>
+    <a href="/">home</a> |
+    <a href="/logout">logout</a>
+    <h1>The Wall</h1>
+    <form action="/messages" method="post">
+        <textarea name="messages"cols="120" rows="5"></textarea>
+        <input type="submit" value="Post Message">
+    </form>
+    <hr>
+    {% for user in session['users'] %}
+<h6>Logged in as {{ user['first_name'] }} {{ user['last_name']}}</h6>
+{% endfor %}
+    {%  for message in usermessages %}
+    <h3>{{ message['message'] }}</h5>
+    <p>by {{message['username']}}</p>
+    {% if session['users'][0]['id'] == message['test']  %}
+    <form action="/delete/{{message['idmessage']}}" method="post">
+    <input type="submit" value="delete post">
+    </form>
+    {% endif %}
+    {% for comment in usercomments %}
+        {% if message['idmessage'] == comment['message_id'] %}
+            <h4>{{comment['comment']}} by {{comment['first_name']}}</h4>
+        {% endif %}
+    {% endfor %}
+    <form action="/comments/{{message['idmessage']}}" method="post">
+        <textarea name="comments" cols="70" rows="2"></textarea>
+        <input type="submit" value="reply">
+    </form>
+    <hr>
+    {% endfor %}
+</body>
+
+</html>
