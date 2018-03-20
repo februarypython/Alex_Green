@@ -11,9 +11,9 @@ def index(request):
     }
     return render(request, 'courses/index.html', context)
 
-def add_course(request):
+def add_course(request): #add course and description
     course = Course.objects.create(name=request.POST['course_name'])
-    d1 = Description(course=course, description=request.POST['desc'])
+    d1 = Description(course=course, description=request.POST['desc']) #description added as a one to one key
     d1.save()
     return redirect("/")
 

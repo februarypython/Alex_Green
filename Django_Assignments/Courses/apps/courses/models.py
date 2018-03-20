@@ -12,7 +12,7 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
-class Description(models.Model):
+class Description(models.Model): #one to one key
     description = models.TextField(default="")
     course = models.OneToOneField(Course, on_delete=models.CASCADE, primary_key=True,)
     
