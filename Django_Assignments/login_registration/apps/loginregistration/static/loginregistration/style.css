@@ -1,0 +1,33 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input {
+    display: block;
+}
+
+.wrapper {
+    width: 178px;
+    border: solid 3px black;
+    border-radius: 5px;
+    margin: auto;
+    padding: 40px;
+}
+.button {
+    padding: 3px;
+    color:white;
+    background-color: blue;
+    margin-top: 3px;
+}
+
+#red {
+    color: red;
+    font-weight: bold;
+    font-size: 75%;
+}
+ul {
+    margin-left: 10px;
+    list-style-type: none;
+}
