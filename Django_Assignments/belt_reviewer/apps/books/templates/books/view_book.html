@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{book.title}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'beltreviewer/style.css' %}">
+</head>
+<body>
+    <h6><a href="/books/success">Home</a> | <a href="/">Logout</a></h6>
+    <h1>{{book.title}}</h1> 
+    <h2>by {{book.author}}</h2>
+    {% for review in book.book_reviews.all %}
+    <hr>
+    <p>Rating: {{review.rating}} stars </p>
+    <p><a href="/books/users/{{review.user.id}}">{{review.user.alias}}</a><span class="small"> says</span>: {{review.review}}</p>
+    <p>{{review.created_at}}</p>
+        {% if review.user.id == user.id %}
+            <a href="/books/{{review.id}}/delete">delete</a>
+        {% endif %}
+    {% endfor %}
+    
+    <fieldset id="add_review">
+        <legend><h4>Add a review</h4></legend>
+        <form action="/books/{{book.id}}/add_review_only" method="post">
+            {% csrf_token %}
+            <textarea name="review" cols="50" rows="3"></textarea>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input type="submit" value="Add Review">
+        </form>
+    </fieldset>
+</body>
+</html>

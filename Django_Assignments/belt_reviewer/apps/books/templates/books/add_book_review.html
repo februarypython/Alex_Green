@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a Review</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'beltreviewer/style.css' %}">
+</head>
+<body>
+    <h6><a href="/books/success">Home</a> | <a href="/">Logout</a></h6>
+    <h6>Logged in as: {{user.alias}}</h6>
+    <fieldset id="addbook">
+    <legend><h1>Add a new Book Title and Review</h1></legend>
+        {% for message in messages %}
+            <p class="error">{{message}}</p>
+        {% endfor %}
+        <form action="/books/process_new_review" method="post">
+            {% csrf_token %}
+            <label for="title">Book Title: </label>
+            <input type="text" name="title">
+            <p>Author</p>
+            <label for="author">Choose from the list: </label>
+            <select name="author">
+                <option value="">Choose an author from the list</option>
+                {% for book in books %}      
+               <option value="{{book.author}}">{{book.author}}</option>
+                {% endfor %}
+            </select>
+            <label for="newauthor">Or add a new author: </label>
+            <input type="text" name="newauthor">
+            <label for="review">Review: </label>
+            <textarea name="review" cols="70" rows="3"></textarea>
+            <label for="rating">Rating: </label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input type="submit" value="Add new book and review">
+        </form>
+    </fieldset>
+</body>
+</html>

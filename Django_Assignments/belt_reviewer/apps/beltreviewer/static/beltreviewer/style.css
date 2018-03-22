@@ -1,0 +1,51 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#wrapper {
+    width: 555px;
+    margin: auto;
+
+}
+
+.log_reg_form {
+    width: 250px;
+    display: inline-block;
+    padding: 10px;
+}
+
+input, textarea, select {
+    display: block;
+}
+
+.error {
+    color: red;
+    font-size: 75%;
+    font-weight: bold;
+}
+
+#reviews {
+    padding: 5px;
+    border: solid 2px black;
+    border-radius: 5px;
+    width: 250px;
+    margin: 5px;
+}
+#addbook {
+    width: 600px;
+    padding: 10px;
+}
+#add_review {
+    width: 250px;
+    padding: 5px;
+}
+
+.show_user {
+    width: 300px;
+    padding: 5px;  
+}
+.small {
+    font-size: 75%;
+}

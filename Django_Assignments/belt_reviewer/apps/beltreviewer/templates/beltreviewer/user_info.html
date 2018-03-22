@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>user info</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'beltreviewer/style.css' %}">
+</head>
+<body>
+    <fieldset class="show_user">
+        <legend><h1>User alias: {{user.alias}}</h1></legend>
+        <h2>Name: {{user.name}}</h2>
+        <h3>Email: {{user.email}}</h3>
+        <h4>Total Reviews: {{rev}}</h4>
+    </fieldset>     
+    <fieldset class="show_user">
+            <legend><h4>Posted reviews on the following books..</h4></legend>
+            <ul>
+                {% for book in all_books %}
+                <li><a href="/books/{{book.book.id}}">{{book.book.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </fieldset>     
+</body>
+</html>
