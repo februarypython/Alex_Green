@@ -19,6 +19,7 @@ class UserManager(models.Manager):
             errors.append("Password must be atleast 8 characters")
         if len(postData['alias']) < 1:
             errors.append("Must have an alias")
+        
         return errors
 
 

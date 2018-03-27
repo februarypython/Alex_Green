@@ -80,7 +80,7 @@ def process_new_review(request):
         for error in validations:
             messages.add_message(request, messages.INFO, error)
             print error
-            return redirect("/books/add")
+        return redirect("/books/add")
     
 def delete_review(request, id):
     Review.objects.get(id=id).delete()

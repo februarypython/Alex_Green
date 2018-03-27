@@ -30,9 +30,11 @@
         </fieldset>
         <fieldset class="log_reg_form">
             <legend>Login</legend>
-            {% for message in messages %}
+            {% if messages %}
+                {% for message in messages %}
                 <p class="error">{{message}}</p>
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
             <form action="/user/login" method="post">
                 {% csrf_token %}
                 <label for="email">Email: </label>

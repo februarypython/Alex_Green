@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax Posts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+        $('#create_post_form').submit(function(){
+            var data=$(this).serialize()
+            console.log(data)
+            var url=$(this).attr("action")
+            console.log(url)
+            $.post(url, data, function(res){
+                console.log(res)
+                $(".placeholder1").append(res)
+            })
+            console.log("form being submitted")
+            return false
+        })
+    })
+</script>
+</head>
+<body>
+    <h1>My Posts</h1>
+    <div class="placeholder1">
+    </div>
+    <h3>Add a note: </h3>
+    <form action="/process_post" method="post" id="create_post_form">
+        {% csrf_token %}
+        <textarea name="post_it" cols="20" rows="4"></textarea>
+        <input type="submit" value="Post it!">
+    </form> 
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax Practice</title>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Demo 1</h1>
+    <button class="btn btn-primary" id="button_json">Fetch http response from users/all.json</button>
+    <button class="btn btn-primary" id="button_html">Fetch http response from users/all.html</button>
+
+    <div style="margin-top: 20px; border: solid 1px silver; padding: 10px; width: 700px;" id="placeholder1">
+        Placeholder for AJAX content</div>
+    
+    <script>
+    
+    $('#button_json').click(function(){
+        console.log('button_json is clicked!')
+        $.ajax({
+            url: '/users/all.json',
+            success: function(serverResponse) {
+                console.log('success. serverResponse:', serverResponse)
+                $('#placeholder1').html(JSON.stringify(serverResponse))
+            }
+        })
+    });
+
+    $('#button_html').click(function(){
+        console.log('button_html is clicked')
+        $.ajax({
+            url: '/users/all.html',
+            success: function(serverResponse) {
+                console.log('success. serverResponse:', serverResponse)
+                $('#placeholder1').html(serverResponse)
+            }
+        })
+    });
+
+    </script>
+
+    <h1>Demo 2 - Ajax Form</h1>
+    <form action="users/find" method="post">
+        {% csrf_token %}
+    Find all users whose first name starts with
+    <input type="text" name="first_name_starts_with" id="ajax_first_name">
+    </form>
+
+    <div style="margin-top: 20px; border: solid 1px silver; padding: 10px; width: 700px;" id="placeholder2">Placeholder 2</div>
+
+    <script>
+      $('#ajax_first_name').keyup(function(){
+          console.log('come here')
+          console.log("parent's serialize() returned",
+          $(this).parent().serialize())
+          $.ajax({
+              url: '/users/find',
+              method: 'post',
+              data: $(this).parent().serialize(),
+              success: function(serverResponse){
+                  console.log('success', serverResponse)
+                  $('#placeholder2').html(serverResponse)
+              }
+          })
+      })  
+
+    
+    </script>
+
+    <h1>Demo 3 - Ajax Form III</h1>
+    <form action="users/create" method="post" class="ajax_form" id="create_user_ajax_form">
+        {% csrf_token %}
+    First Name: <input type="text" name="first_name">
+    Last Name: <input type="text" name="last_name">
+    Email Address: <input type="text" name="email_address">
+    <input type="submit" value="Submit">
+    </form>
+
+    <div style="margin-top: 20px; border: solid 1px silver; padding: 10px; width: 700px;" id="placeholder3">Placeholder 3</div>
+
+    <script>
+        $('#create_user_ajax_form').submit(function(e){
+            e.preventDefault()
+            $.ajax({
+              url: $(this).attr('action'),
+              method: 'post',
+              data: $(this).serialize(),
+              success: function(serverResponse){
+                  console.log('success', serverResponse)
+                  $('#placeholder3').html(serverResponse)
+              }
+          });
+        })
+
+    
+    </script>
+
+</body>
+</html>
