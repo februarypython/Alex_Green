@@ -18,4 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('apps.log_reg.urls')),
+    url(r'^profile', include('apps.comment_wall.urls'))
 ]
