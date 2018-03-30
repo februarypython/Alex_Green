@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Self</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+    <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a>
+    <h1>Edit {{user.first_name}} {{user.last_name}}</h1>
+    {% for message in messages %}
+    <p class="text-danger">{{message}}</p>
+    {% endfor %}  
+    <fieldset>
+        <legend>Edit information</legend>
+        <form action="/users/{{user.id}}/update" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="edit_user" value="user_info">
+            <label for="first_name"><p>First Name</p></label>
+            <input type="text" name="first_name" value="{{user.first_name}}">
+            <label for="last_name"><p>Last Name</p></label>
+            <input type="text" name="last_name" value="{{user.last_name}}">
+            <label for ="email"><p>Email Address</p></label>
+            <input type="text" name="email" value="{{user.email}}">
+            <input type="submit" value="Edit Info">
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>Change Password</legend>
+        <form action="/users/{{user.id}}/update" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="edit_user" value="user_password">
+            <label for="password"><p>Password</p></label>
+            <input type="password" name="password">
+            <label for="pwconfirm"><p>Confirm Password</p></label>
+            <input type="password" name="pwconfirm" value="{{user.pwconfirm}}">               
+            <input type="submit" value="Update Password">
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>Change Description</legend>
+        <form action="/users/{{user.id}}/update" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="edit_user" value="user_description">
+            <label for="description"><p>Description</p></label>
+            <textarea name="description" cols="30" rows="10"></textarea>
+            {{user.description}}
+            <input type="submit" value="Edit Description">
+        </form>
+    </fieldset>
+</body>
+</html>

@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration page</title>
+    <title>Admin add user</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-4">
-                <h1>Registration</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <h3>Add a new user</h3>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-2">
+            <a href="/dashboard/admin" class="btn-primary">Dashboard</a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <form action="/process_registration" method="post">
                     {% csrf_token %}
                     <label for="email">Email: </label><br>
@@ -28,14 +38,10 @@
                     <input type="password" name="pwconfirm"><br>
                     <input type="submit" value="Register">
                 </form>
-                <a href="/sign_in">Already have an account? Login</a>
-                <ul>
-                    {% for message in messages %}
-                        <li class="text-danger">{{message}}</li>
-                    {% endfor %}
-                </ul>
             </div>
-        </div>
-    </div>       
+            <div class="col-md-1"></div>
+
+    </div>
+</div>
 </body>
 </html>

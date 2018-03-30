@@ -12,12 +12,12 @@
         crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
-        $('#create_post_form').submit(function(){
-            var data=$(this).serialize()
+        $('#create_post_form').submit(function(){//when form is submitted, run function
+            var data=$(this).serialize()//set variable to this posted info, serialized
             console.log(data)
-            var url=$(this).attr("action")
+            var url=$(this).attr("action")//set variable to the url specified in form action
             console.log(url)
-            $.post(url, data, function(res){
+            $.post(url, data, function(res){//.post loads data from the server using POST request
                 console.log(res)
                 $(".placeholder1").append(res)
             })

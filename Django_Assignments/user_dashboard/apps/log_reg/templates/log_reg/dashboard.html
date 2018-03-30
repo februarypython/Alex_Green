@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <h5>Dashboard</h5>
+        </div>
+        <div class="col-md-2">
+            <a href="/profile">Profile</a>
+        </div>
+        <div class="col-md-5"></div>
+        <div class="col-md-1">
+            <a href="/">Logout</a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    {{this_user.first_name}} {{this_user.last_name}}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2"><h1>All Users</h1></div>
+        <div class="col-md-7"></div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table>
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Created at</th>
+                    <th>User level</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {% for user in all_users %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.first_name}} {{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.created_at}}</td>
+                        <td>
+                            {% if user.user_level == 9 %} 
+                            admin
+                            {% else %}
+                            user
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.id == this_user.id %}
+                            <a href="/users/{{user.id}}/edit">Edit profile</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Edit User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            {% for message in messages %}
+            <p class="text-danger">{{message}}</p>
+            {% endfor %}  
+            <form action="/process/{{user.id}}/edit" method="post">
+                {% csrf_token %}
+                <h5>Edit Information</h5>
+                <input type="hidden" name="admin_edit" value="edit_info">
+                <label for="email">Email Address:</label><br>
+                <input type="text" name="email" value="{{user.email}}"><br>
+                <label for="first_name">First Name:</label><br>
+                <input type="text" name="first_name" value="{{user.first_name}}"><br>
+                <label for="last_name">Last Name:</label><br>
+                <input type="text" name="last_name" value="{{user.last_name}}"><br>
+                <label for="user_level">User Level:</label><br>
+                <select name="user_level">
+                    <option value="1">Normal</option>
+                    <option value="9">Admin</option>
+                </select><br>
+                <br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form action="/process/{{user.id}}/edit" method="post">
+                {% csrf_token %}
+                <h5>Change Password</h5>
+                <input type="hidden" name="admin_edit" value="edit_password">
+                <label for="password">Password:</label><br>
+                <input type="password" name="password"><br>
+                <label for="pwconfirm">Password Confirmation:</label><br>
+                <input type="password" name="pwconfirm"><br>
+                <br>
+                <input type="submit" value="Update Password"><br>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div> 
+</div>
+    
+</body>
+</html>
