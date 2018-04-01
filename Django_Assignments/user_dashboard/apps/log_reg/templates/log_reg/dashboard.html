@@ -10,21 +10,26 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-2">
-            <h5>Dashboard</h5>
+            <a href="/dashboard"><h5>Dashboard</h5></a>
         </div>
         <div class="col-md-2">
-            <a href="/profile">Profile</a>
+            <a href="/profile/{{this_user.id}}">Profile</a>
         </div>
         <div class="col-md-5"></div>
         <div class="col-md-1">
             <a href="/">Logout</a>
         </div>
         <div class="col-md-1"></div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-1"></div>
+        {{this_user.first_name}} {{this_user.last_name}} 
+        <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a>
     </div>
-    {{this_user.first_name}} {{this_user.last_name}}
+    
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-2"><h1>All Users</h1></div>
@@ -49,7 +54,7 @@
                     {% for user in all_users %}
                     <tr>
                         <td>{{user.id}}</td>
-                        <td>{{user.first_name}} {{user.last_name}}</td>
+                        <td><a href="/profile/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></td>
                         <td>{{user.email}}</td>
                         <td>{{user.created_at}}</td>
                         <td>

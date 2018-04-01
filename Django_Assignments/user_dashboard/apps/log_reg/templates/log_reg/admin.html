@@ -16,7 +16,7 @@
             <h5>Dashboard</h5>
         </div>
         <div class="col-md-2">
-            <a href="/profile">Profile</a>
+            <a href="/profile/{{user.id}}">Profile</a>
         </div>
         <div class="col-md-5"></div>
         <div class="col-md-1">
@@ -53,7 +53,7 @@
                     {% for user in all_users %}
                     <tr>
                         <td>{{user.id}}</td>
-                        <td>{{user.first_name}} {{user.last_name}}</td>
+                        <td><a href="/profile/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></td>
                         <td>{{user.email}}</td>
                         <td>{{user.created_at}}</td>
                         <td>

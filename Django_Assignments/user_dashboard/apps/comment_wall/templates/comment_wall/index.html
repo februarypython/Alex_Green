@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <table>
+        <tr>
+            <td>Registered at:</td>
+            <td>{{user.created_at}}</td>
+        </tr>
+        <tr>
+            <td>User ID</td>
+            <td>#{{user.id}}</td>
+        </tr>
+        <tr>
+            <td>Email Address:</td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td>{{user.description}}</td>
+        </tr>
+    </table>
+    <hr>
+    <form action="/profile/process_message/{{user.id}}" method="post">
+        {% csrf_token %}
+        <h1>Leave a message for {{user.first_name}}</h1>
+        <textarea name="message" id="" cols="150" rows="5"></textarea><br>
+        <input type="submit" value="Post">
+    </form>
+    {% for message in user_messages %}
+        <div style="width: 75%; padding: 5px; border: 2px solid black; margin: 5px; border-radius: 3px;">
+            <h6>{{message.user_from.first_name}} wrote at {{message.created_at}}</h6>
+            <h3>{{message.wall_message}}</h3>
+        </div>
+            {% for comment in message.comments.all %}
+            <div style="margin-left: 30px; padding: 3px; border: 0.5px solid black; width: 50%; margin: 5px; border-radius: 3px;">
+                <h6>{{comment.user_from.first_name}} wrote at {{comment.created_at}}</h6>
+                <h4>{{comment.comment}}</h4>
+            </div>
+        {% endfor %}
+        
+        <form action="/profile/{{user.id}}/process_comment/{{message.id}}" method="post" style="margin-left: 20px;">
+            {% csrf_token %}
+            <h4>reply</h4>
+            <textarea name="comment" cols="80" rows="2"></textarea><br>
+            <input type="submit" value="Reply">
+        </form>
+        <hr>
+    {% endfor %}
+</body>
+
+</html>

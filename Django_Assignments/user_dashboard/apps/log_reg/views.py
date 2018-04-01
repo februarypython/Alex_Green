@@ -91,7 +91,7 @@ def edit_self(request, id):
     return render(request, 'log_reg/edit_self.html', context)
 
 def update_user(request, id):
-    # user = User.objects.get(id=id)
+    user = User.objects.get(id=id)
     if request.POST['edit_user'] == "user_info":
         validation = User.objects.validateEditInfo(request.POST, id)
         if len(validation) > 0:
